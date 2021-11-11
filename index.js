@@ -10,18 +10,7 @@ app.use(express.json());
 
 const port = process.env.PORT || 5000;
 
-// get_food
-
-//  X9WalMdNacDD4RVv
-
-/* const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.quagy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-console.log(uri);
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}); */
-const uri =
-  "mongodb+srv://get_food:X9WalMdNacDD4RVv@cluster0.quagy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.quagy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
