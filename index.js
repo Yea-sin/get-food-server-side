@@ -42,6 +42,22 @@ async function run() {
       res.send(foods);
     });
 
+    // GET SINGLE FOOD API
+    app.get("/foods/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const foods = await foodsCollection.findOne(query);
+      res.json(foods);
+    });
+
+    // GET ORDER API
+    app.get("/orders", async (req, res) => {
+      const cursor = ordersCollection.find({});
+      const orders = await cursor.toArray();
+
+      res.send(orders);
+    });
+
     // POST ORDERS API
     app.post("/orders", async (req, res) => {
       const order = req.body;
@@ -58,7 +74,16 @@ async function run() {
       res.json(result);
     });
 
-    // DELETE API
+    // DELETE ORDERS API
+    app.delete("/orders/:id", async (req, res) => {
+      const id = req.params.id;
+      // console.log("this is id", id);
+      const query = { _id: ObjectId(id) };
+      const orders = await ordersCollection.deleteOne(query);
+      res.json(orders);
+    });
+
+    // DELETE FOODS API
     app.delete("/foods/:id", async (req, res) => {
       const id = req.params.id;
       // console.log("this is id", id);
